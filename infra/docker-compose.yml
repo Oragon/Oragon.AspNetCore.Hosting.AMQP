@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  
+  rabbitmq:    
+    image: rabbitmq:management-alpine
+    ports:
+    - "15672:15672"  #Management
+    - "5672:5672"    #AMQP
+    environment:
+      RABBITMQ_DEFAULT_USER: usuario
+      RABBITMQ_DEFAULT_PASS: senha
+      RABBITMQ_DEFAULT_VHOST: exemplo_amqp
+    volumes:
+      - mq_data:/var/lib/rabbitmq/mnesia
+    networks: 
+      - rabbitmq_amqp_network
+
+volumes:
+  mq_data:
+
+
+networks: 
+    rabbitmq_amqp_network: {} 

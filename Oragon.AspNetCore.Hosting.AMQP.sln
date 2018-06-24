@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP", "Oragon.AspNetCore.Hosting.AMQP\Oragon.AspNetCore.Hosting.AMQP.csproj", "{08DF867A-CC27-4D86-B393-9CA987F164DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{18FBBD6C-2604-4EBD-9DA3-383B6025265C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrated", "Integrated", "{EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{28673550-711E-46F5-B757-96725966DDA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy.csproj", "{78E7E908-9290-4235-AED1-54C2479D8D5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08DF867A-CC27-4D86-B393-9CA987F164DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DF867A-CC27-4D86-B393-9CA987F164DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DF867A-CC27-4D86-B393-9CA987F164DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DF867A-CC27-4D86-B393-9CA987F164DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78E7E908-9290-4235-AED1-54C2479D8D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E7E908-9290-4235-AED1-54C2479D8D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E7E908-9290-4235-AED1-54C2479D8D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E7E908-9290-4235-AED1-54C2479D8D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB} = {18FBBD6C-2604-4EBD-9DA3-383B6025265C}
+		{28673550-711E-46F5-B757-96725966DDA9} = {18FBBD6C-2604-4EBD-9DA3-383B6025265C}
+		{78E7E908-9290-4235-AED1-54C2479D8D5C} = {EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB}
+		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE} = {EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44105F21-9D93-463C-B6D2-39DA6D194221}
+	EndGlobalSection
+EndGlobal
