@@ -11,6 +11,9 @@ namespace Oragon.AspNetCore.Hosting.AMQP
         internal IConnection connection;
 
         internal IModel model;
-        internal SimpleRpcClient rpc;
+
+        internal string queueName;
+
+        internal long usage;
     }
 }

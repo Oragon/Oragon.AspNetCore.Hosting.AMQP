@@ -26,7 +26,14 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
             var configuration = new Configuration();
             builderConfigurer(configuration);
 
-            bool oneTimeExec = true;
+            using (var rabbitMQConnection = configuration.ConnectionFactory.CreateConnection($"{fingerPrint}|Oragon.AspNetCore.Hosting.AMQP.Worker|{configuration.GroupName}"))
+            {
+                using (var model = rabbitMQConnection.CreateModel())
+                {
+                    model.QueueDeclare(configuration.GetQueueName(), true, false, false, null);
+                }
+            }
+
             using (TestServer testServer = new TestServer(builder))
             {
                 for (int connectionSeq = 0; connectionSeq <= configuration.PoolSize; connectionSeq++)
@@ -36,11 +43,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
                         {
                             using (var model = rabbitMQConnection.CreateModel())
                             {
-                                if (oneTimeExec)
-                                {
-                                    model.QueueDeclare(configuration.GetQueueName(), true, false, false, null);
-                                    oneTimeExec = false;
-                                }
                                 var rpcServer = new RpcServer(
                                     new Subscription(
                                         model: model,
@@ -57,11 +59,11 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
                 }
                 while (true)
                 {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(250));
+                    Thread.Sleep(500);
                 }
             }
         }
     }
 
-    
+
 }

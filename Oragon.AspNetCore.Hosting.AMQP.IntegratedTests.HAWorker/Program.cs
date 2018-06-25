@@ -28,7 +28,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker
                     VirtualHost = "exemplo_amqp",
                     Port = 5672
                 })
-                .WithPoolSize(20)
+                .WithPoolSize(10)
                
             );
 

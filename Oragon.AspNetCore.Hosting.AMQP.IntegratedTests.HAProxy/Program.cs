@@ -19,11 +19,14 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseKestrel(options =>
-            {
-                options.Limits.MaxConcurrentConnections = 16000;
-                options.Limits.MaxConcurrentUpgradedConnections = 16000;                
-            })
+            .UseKestrel(configureOptions)
             .UseStartup<Startup>();
+
+
+        private static void configureOptions(Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions options)
+        {
+            options.Limits.MaxConcurrentConnections = null;
+            options.Limits.MaxConcurrentUpgradedConnections = null;
+        }
     }
 }

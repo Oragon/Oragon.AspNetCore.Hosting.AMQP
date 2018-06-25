@@ -8,6 +8,20 @@
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <PackageIconUrl>http://luizcarlosfaria.net/wp-content/uploads/2014/03/Oragon-Architecture-Penknife.export.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>Oragon, Architecture, luiz, carlos, faria, luizcarlosfaria, oragonarchitect</PackageTags>
+    <Copyright>Copyright 2018</Copyright>
+    <Authors>LuizCarlosFaria</Authors>
+    <Company>gago.io</Company>
+    <Description>Experimental drop-in replacement for HTTP on ASP.NET Core 2.1</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Oragon.AspNetCore.Hosting.AMQP.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

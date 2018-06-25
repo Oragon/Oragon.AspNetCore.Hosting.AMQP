@@ -9,7 +9,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public static class MiddlewareExtensions
     {
-        public static IApplicationBuilder UseMoARServer(this IApplicationBuilder app, Action<Configuration> builderConfigurer)
+        public static IApplicationBuilder UseAmqp(this IApplicationBuilder app, Action<Configuration> builderConfigurer)
         {
             if (app == null)
             {

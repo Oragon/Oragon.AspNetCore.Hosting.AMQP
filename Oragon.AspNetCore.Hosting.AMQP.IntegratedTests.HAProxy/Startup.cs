@@ -53,13 +53,13 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy
 
             //app.UseHttpsRedirection();
 
-            app.UseMoARServer(it =>
-            it.WithGroupName("dynamic_api")
-            .WithRoute("GET", "/api/", Pattern.FireAndForget)
-            .WithRoute("*", "/api/", Pattern.FireAndForget)
-            .WithPoolSize(100)
-            .WithConnectionFactory(app.ApplicationServices.GetRequiredService<IConnectionFactory>())
-        );
+            app.UseAmqp(it =>
+                it.WithGroupName("dynamic_api")
+                .WithRoute("GET", "/api/", Pattern.FireAndForget)
+                .WithRoute("*", "/api/", Pattern.FireAndForget)
+                .WithPoolSize(10)
+                .WithConnectionFactory(app.ApplicationServices.GetRequiredService<IConnectionFactory>())
+            );
 
             app.UseMvc();
 

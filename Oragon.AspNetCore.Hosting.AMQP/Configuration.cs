@@ -15,6 +15,8 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
         public int PoolSize { get; internal set; } = 5;
 
+        public long MaxConnectionAge { get; internal set; } = 20000;
+
         public IConnectionFactory ConnectionFactory { get; internal set; }
 
         public List<RouteInfo> Routes { get; internal set; } = new List<RouteInfo>();

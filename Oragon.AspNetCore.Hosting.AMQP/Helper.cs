@@ -9,25 +9,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public static class Helper
     {
-        private static IFormatter formatter = new BinaryFormatter();
 
-        public static byte[] Serialize(object objectToSerialize)
-        {
-            using (Stream stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, objectToSerialize);
-                stream.Position = 0;
-                return stream.ReadToEnd();
-            }
-        }
-
-        public static T Deserialize<T>(byte[] bytes)
-        {
-            using (Stream stream = new MemoryStream(bytes))
-            {
-                return (T)formatter.Deserialize(stream);
-            }
-        }
 
         public static byte[] ReadToEnd(this Stream stream)
         {

@@ -17,11 +17,10 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
         public bool Match(HttpContext context)
         {
-            string path = context.Request.Path.Value?.ToLowerInvariant();
             return
                 (this.Method == "*" || context.Request.Method.ToUpperInvariant() == this.Method.ToUpperInvariant())
                 &&
-                path.ToLowerInvariant().StartsWith(this.Route.ToLowerInvariant());
+                context.Request.Path.Value.ToLowerInvariant().StartsWith(this.Route.ToLowerInvariant());
         }
     }
 }
