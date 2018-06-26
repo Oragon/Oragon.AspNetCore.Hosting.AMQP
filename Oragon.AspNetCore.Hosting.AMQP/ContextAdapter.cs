@@ -43,7 +43,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             {
                 if (props.Headers["AMQP_CONTENTTYPE"] != null)
                 {
-                    it.Content.Headers.ContentType = new MediaTypeHeaderValue(props.Headers["AMQP_CONTENTTYPE"].UTF8GetString());
+                    it.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(props.Headers["AMQP_CONTENTTYPE"].UTF8GetString());
                     it.Content.Headers.ContentLength = (long)props.Headers["AMQP_CONTENTLENGTH"];
                 }
             });

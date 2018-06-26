@@ -26,20 +26,29 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
             var configuration = new Configuration();
             builderConfigurer(configuration);
 
-            using (var rabbitMQConnection = configuration.ConnectionFactory.CreateConnection($"{fingerPrint}|Oragon.AspNetCore.Hosting.AMQP.Worker|{configuration.GroupName}"))
-            {
-                using (var model = rabbitMQConnection.CreateModel())
-                {
-                    model.QueueDeclare(configuration.GetQueueName(), true, false, false, null);
-                }
-            }
-
             using (TestServer testServer = new TestServer(builder))
             {
+
+                Func<IConnectionFactory> getConnectionFactory = () => {
+                    var connectionFactory = configuration.ConnectionFactory ?? (IConnectionFactory)testServer.Host.Services.GetService(typeof(IConnectionFactory)) ?? throw new InvalidOperationException("IConnectionFactory not found");
+
+                    return connectionFactory;
+
+                };
+
+                using (var rabbitMQConnection = getConnectionFactory().CreateConnection($"{fingerPrint}|Oragon.AspNetCore.Hosting.AMQP.Worker|{configuration.GroupName}"))
+                {
+                    using (var model = rabbitMQConnection.CreateModel())
+                    {
+                        model.QueueDeclare(configuration.GetQueueName(), true, false, false, null);
+                    }
+                }
+
+
                 for (int connectionSeq = 0; connectionSeq <= configuration.PoolSize; connectionSeq++)
                 {
                     Thread newThread = new Thread(() => {
-                        using (var rabbitMQConnection = configuration.ConnectionFactory.CreateConnection($"{fingerPrint}#{connectionSeq}|Oragon.AspNetCore.Hosting.AMQP.Worker|{configuration.GroupName}"))
+                        using (var rabbitMQConnection = getConnectionFactory().CreateConnection($"{fingerPrint}#{connectionSeq}|Oragon.AspNetCore.Hosting.AMQP.Worker|{configuration.GroupName}"))
                         {
                             using (var model = rabbitMQConnection.CreateModel())
                             {

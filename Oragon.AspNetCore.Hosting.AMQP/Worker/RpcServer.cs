@@ -18,6 +18,33 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
             this.testServer = testServer;
         }
 
+        public override void HandleCast(bool isRedelivered, IBasicProperties requestProperties, byte[] body)
+        {
+            if (requestProperties.Headers != null)
+            {
+                var path = requestProperties.Headers["AMQP_PATH"].UTF8GetString();
+                var method = requestProperties.Headers["AMQP_METHOD"].UTF8GetString();
+
+                var request = testServer.CreateRequest(path);
+
+                if (body.Length > 0)
+                {
+                    request.And(it =>
+                    {
+
+                        it.Content = new StreamContent(new MemoryStream(body));
+
+                    });
+                }
+
+                ContextAdapter.FillRequestBuilderFromProperties(requestProperties, request);
+                
+                var response = request.SendAsync(method).GetAwaiter().GetResult();
+
+                this.m_subscription.Ack();
+            }
+        }
+
         public override byte[] HandleCall(bool isRedelivered, IBasicProperties requestProperties, byte[] body, out IBasicProperties replyProperties)
         {
             byte[] returnValue = null;
