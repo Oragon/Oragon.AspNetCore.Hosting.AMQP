@@ -80,7 +80,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP
         /// <param name="props"></param>
         public static void FillResponseFromProperties(HttpContext context, IBasicProperties props)
         {
-            context.Response.Headers.Clear();
             context.Response.StatusCode = (int)props.Headers["AMQP_STATUSCODE"];
             context.Response.ContentType = props.Headers["AMQP_CONTENTTYPE"].UTF8GetString();
             context.Response.ContentLength = props.Headers["AMQP_CONTENTLENGTH"].UTF8GetLong();

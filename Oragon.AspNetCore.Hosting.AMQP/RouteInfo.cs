@@ -7,20 +7,24 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public class RouteInfo
     {
-        public string Route { get; internal set; }
+        private string route;
+        public string Route { get { return this.route; } internal set { this.route = value.ToLowerInvariant(); } }
 
         public Pattern Pattern { get; internal set; }
 
-        public string Method { get; internal set; }
+
+        private string method;
+        public string Method { get { return this.method; } internal set { this.method = value.ToLowerInvariant(); } }
 
 
 
         public bool Match(HttpContext context)
         {
             return
-                (this.Method == "*" || context.Request.Method.ToUpperInvariant() == this.Method.ToUpperInvariant())
+                (this.method == "*" || context.Request.Method.ToLowerInvariant() == this.method)
                 &&
-                context.Request.Path.Value.ToLowerInvariant().StartsWith(this.Route.ToLowerInvariant());
+                (this.route == "*" || context.Request.Path.Value.ToLowerInvariant().StartsWith(this.route))
+                ;
         }
     }
 }

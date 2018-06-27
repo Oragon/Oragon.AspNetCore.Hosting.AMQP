@@ -6,7 +6,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public enum Pattern
     {
-        None,
+        Ignore,
         Rpc,
         FireAndForget
     }

@@ -84,11 +84,11 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
         public async Task Invoke(HttpContext context)
         {
             RouteInfo route = this.routeInfos.FirstOrDefault(it => it.Match(context));
-            if (route != null)
+            if (route != null && route.Pattern != Pattern.Ignore)
             {
                 ConnectionPoolItem poolItem;
 
-                while (this.connectionPool.TryDequeue(out poolItem) == false);
+                while (this.connectionPool.TryDequeue(out poolItem) == false) ;
 
                 if (route.Pattern == Pattern.Rpc)
                 {
