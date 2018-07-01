@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrated", "Integrated", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{28673550-711E-46F5-B757-96725966DDA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy.csproj", "{78E7E908-9290-4235-AED1-54C2479D8D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy.csproj", "{78E7E908-9290-4235-AED1-54C2479D8D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQPTests", "Oragon.AspNetCore.Hosting.AMQPTests\Oragon.AspNetCore.Hosting.AMQPTests.csproj", "{039BE399-216C-4563-95D2-66EBBA09E1E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{039BE399-216C-4563-95D2-66EBBA09E1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{039BE399-216C-4563-95D2-66EBBA09E1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{039BE399-216C-4563-95D2-66EBBA09E1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{039BE399-216C-4563-95D2-66EBBA09E1E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 		{28673550-711E-46F5-B757-96725966DDA9} = {18FBBD6C-2604-4EBD-9DA3-383B6025265C}
 		{78E7E908-9290-4235-AED1-54C2479D8D5C} = {EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB}
 		{3A58B344-1DA3-4017-8A57-878AEFD0D6FE} = {EE0A1EF7-E47E-4C87-B4CD-A28C71EB9FAB}
+		{039BE399-216C-4563-95D2-66EBBA09E1E4} = {28673550-711E-46F5-B757-96725966DDA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44105F21-9D93-463C-B6D2-39DA6D194221}
