@@ -11,7 +11,7 @@ pipeline {
       
         stage('Build') {
             steps {
-                git branch: 'develop', credentialsId: 'GITHUB_USERNAME', url: 'https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP.git'
+                git branch: 'master', credentialsId: 'GITHUB_USERNAME', url: 'https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP.git'
                 
                 sh 'dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln'
             }
