@@ -125,11 +125,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             ContextAdapter.FillPropertiesFromRequest(propsIn, context);
 
             poolItem.model.BasicPublish(string.Empty, poolItem.queueName, propsIn, payload);
-
-
-            //context.Response.StatusCode = 204;
-
-
+            
         }
 
         private void InvokeWithRpcChoreography(ref ConnectionPoolItem poolItem, ref HttpContext context)

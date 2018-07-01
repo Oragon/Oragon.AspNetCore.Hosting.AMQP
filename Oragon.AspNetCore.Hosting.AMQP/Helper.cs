@@ -26,11 +26,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             return objectToConvert is string ? (string)objectToConvert : objectToConvert == null ? null : Encoding.UTF8.GetString((byte[])objectToConvert);
         }
 
-        public static int UTF8GetInt(this object objectToConvert)
-        {
-            return objectToConvert is int ? (int)objectToConvert : objectToConvert == null ? 0 : int.Parse(objectToConvert.UTF8GetString());
-        }
-
         public static long UTF8GetLong(this object objectToConvert)
         {
             return objectToConvert is long ? (long)objectToConvert : objectToConvert == null ? 0 : long.Parse(objectToConvert.UTF8GetString());
