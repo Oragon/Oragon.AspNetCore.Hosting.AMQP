@@ -17,6 +17,14 @@ namespace Oragon.AspNetCore.Hosting.AMQP
         public string Method { get { return this.method; } internal set { this.method = value.ToLowerInvariant(); } }
 
 
+        public RouteInfo() { }
+
+        public RouteInfo(string method, string route, Pattern pattern)
+        {
+            this.Method = method;
+            this.Route = route;
+            this.Pattern = pattern;
+        }
 
         public bool Match(HttpContext context)
         {
