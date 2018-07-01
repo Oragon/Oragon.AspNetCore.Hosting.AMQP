@@ -13,7 +13,7 @@
     <PackageLicenseUrl>https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageTags>Oragon, Architecture, luiz, carlos, faria, luizcarlosfaria, oragonarchitect</PackageTags>
+    <PackageTags>Oragon Architecture,  Oragon, Architecture, luiz, carlos, faria, luizcarlosfaria, oragonarchitect</PackageTags>
     <Copyright>Copyright 2018</Copyright>
     <Authors>LuizCarlosFaria</Authors>
     <Company>gago.io</Company>
