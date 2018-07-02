@@ -10,36 +10,62 @@ pipeline {
     stages {
       
         stage('Build') {
+
             steps {
+
                 // git branch: 'master', credentialsId: 'GITHUB_USERNAME', url: 'https://github.com/Oragon/Oragon.AspNetCore.Hosting.AMQP.git'
                 
                 echo sh(script: 'env|sort', returnStdout: true)
 
-                sh 'dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln'                
+                sh 'dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln'
+
             }
+
         }
+
         stage('Test') {
+
             steps {
+
                 sh 'dotnet test ./Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
             }
+
         }
+
         stage('Pack') {
+
             when { buildingTag() }
+
             steps {
+
                 script{
+
                     if (env.BRANCH_NAME.endsWith("-alpha")) {
+
                         sh 'dotnet pack ./Oragon.AspNetCore.Hosting.AMQP/Oragon.AspNetCore.Hosting.AMQP.csproj --configuration Debug /p:PackageVersion="$BRANCH_NAME" --include-source --include-symbols --output ../output-packages'
+
                     } else if (env.BRANCH_NAME.endsWith("-beta")) {
+
                         sh 'dotnet pack ./Oragon.AspNetCore.Hosting.AMQP/Oragon.AspNetCore.Hosting.AMQP.csproj --configuration Release /p:PackageVersion="$BRANCH_NAME" --output ../output-packages'                        
+
                     } else {
+
                         sh 'dotnet pack ./Oragon.AspNetCore.Hosting.AMQP/Oragon.AspNetCore.Hosting.AMQP.csproj --configuration Release /p:PackageVersion="$BRANCH_NAME" --output ../output-packages'
+
                     }
+
                 }
+
             }
+
         }
+
         stage('Publish') {
+
             when { buildingTag() }
-            steps {                
+
+            steps {
+                
                 script {
                     
                     if (env.BRANCH_NAME.endsWith("-alpha")) {
