@@ -29,7 +29,7 @@ pipeline {
         stage('Publish') {
             when { tag "*-alpha" }
             steps {
-				withCredentials([string(credentialsId: 'myget-oragon', variable: 'MYGET_KEY')]) {
+				withCredentials([usernamePassword(credentialsId: 'myget-oragon', passwordVariable: 'MYGET_KEY')]) {
 					sh 'dotnet nuget push $(ls ./output-packages/*.nupkg)  -k "$MYGET_KEY" -s https://www.myget.org/F/oragon-alpha/api/v3/index.json'
 				}
             }
