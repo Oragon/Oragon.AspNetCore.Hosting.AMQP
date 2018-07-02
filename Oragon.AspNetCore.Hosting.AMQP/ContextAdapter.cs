@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using RabbitMQ.Client;
-using System;
 using System.Collections.Generic;
 
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public static class ContextAdapter
     {
-
         /// <summary>
         /// 1
         /// </summary>
@@ -21,11 +18,13 @@ namespace Oragon.AspNetCore.Hosting.AMQP
         public static void FillPropertiesFromRequest(IBasicProperties props, HttpContext context)
         {
             props.DeliveryMode = 2;
-            props.Headers = new Dictionary<string, object>();
-            props.Headers.Add("AMQP_METHOD", context.Request.Method);
-            props.Headers.Add("AMQP_PATH", context.Request.Path.ToString());
-            props.Headers.Add("AMQP_CONTENTTYPE", context.Request.ContentType);
-            props.Headers.Add("AMQP_CONTENTLENGTH", context.Request.ContentLength);
+            props.Headers = new Dictionary<string, object>
+            {
+                { "AMQP_METHOD", context.Request.Method },
+                { "AMQP_PATH", context.Request.Path.ToString() },
+                { "AMQP_CONTENTTYPE", context.Request.ContentType },
+                { "AMQP_CONTENTLENGTH", context.Request.ContentLength }
+            };
             foreach (var header in context.Request.Headers)
             {
                 props.Headers.Add(header.Key, header.Value.ToString());
@@ -51,7 +50,9 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             foreach (var header in props.Headers)
             {
                 if (header.Key.StartsWith("AMQP_") == false)
+                {
                     requestBuilder.AddHeader(header.Key, header.Value.UTF8GetString());
+                }
             }
         }
 
@@ -63,10 +64,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP
         public static void FillPropertiesFromResponse(IBasicProperties props, HttpResponseMessage response)
         {
             props.DeliveryMode = 2;
-            props.Headers = new Dictionary<string, object>();
-            props.Headers.Add("AMQP_STATUSCODE", (int)response.StatusCode);
-            props.Headers.Add("AMQP_CONTENTTYPE", response.Content.Headers.ContentType?.ToString());
-            props.Headers.Add("AMQP_CONTENTLENGTH", response.Content.Headers.ContentLength ?? 0);
+            props.Headers = new Dictionary<string, object>
+            {
+                { "AMQP_STATUSCODE", (int)response.StatusCode },
+                { "AMQP_CONTENTTYPE", response.Content.Headers.ContentType?.ToString() },
+                { "AMQP_CONTENTLENGTH", response.Content.Headers.ContentLength ?? 0 }
+            };
             foreach (var header in response.Headers)
             {
                 props.Headers.Add(header.Key, header.Value.ToString());
@@ -86,10 +89,10 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             foreach (var header in props.Headers)
             {
                 if (header.Key.StartsWith("AMQP_") == false)
+                {
                     context.Response.Headers.Add(header.Key, header.Value.UTF8GetString());
+                }
             }
         }
-
-
     }
 }

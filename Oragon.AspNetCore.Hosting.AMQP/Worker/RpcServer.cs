@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.TestHost;
 using RabbitMQ.Client;
 using RabbitMQ.Client.MessagePatterns;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP.Worker
 {
@@ -31,14 +29,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
                 {
                     request.And(it =>
                     {
-
                         it.Content = new StreamContent(new MemoryStream(body));
-
                     });
                 }
 
                 ContextAdapter.FillRequestBuilderFromProperties(requestProperties, request);
-                
+
                 var response = request.SendAsync(method).GetAwaiter().GetResult();
 
                 this.m_subscription.Ack();
@@ -61,9 +57,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
                 {
                     request.And(it =>
                     {
-
                         it.Content = new StreamContent(new MemoryStream(body));
-
                     });
                 }
 

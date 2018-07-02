@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
@@ -12,12 +9,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
         public Pattern Pattern { get; internal set; }
 
-
         private string method;
         public string Method { get { return this.method; } internal set { this.method = value.ToLowerInvariant(); } }
 
-
-        public RouteInfo() { }
+        public RouteInfo()
+        {
+        }
 
         public RouteInfo(string method, string route, Pattern pattern)
         {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
 using RabbitMQ.Client;
 using RabbitMQ.Client.MessagePatterns;
 using System;
@@ -7,8 +6,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Oragon.AspNetCore.Hosting.AMQP.Server
@@ -29,7 +26,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             this.CreatePool();
         }
 
-
         private ConnectionPoolItem BuildConnectionPoolItem()
         {
             var rabbitMQConnection = this.configuration.ConnectionFactory.CreateConnection(this.connectionName);
@@ -41,7 +37,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
                 queueName = this.configuration.GetQueueName()
             };
         }
-
 
         private ConnectionPoolItem RecycleConnectionPoolItem(ref ConnectionPoolItem connectionPoolItem)
         {
@@ -80,7 +75,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
 
         private ConcurrentQueue<ConnectionPoolItem> connectionPool = new ConcurrentQueue<ConnectionPoolItem>();
 
-
         public async Task Invoke(HttpContext context)
         {
             RouteInfo route = this.routeInfos.FirstOrDefault(it => it.Match(context));
@@ -88,34 +82,30 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             {
                 ConnectionPoolItem poolItem;
 
-                while (this.connectionPool.TryDequeue(out poolItem) == false) ;
+                while (this.connectionPool.TryDequeue(out poolItem) == false)
+                {
+                    ;
+                }
 
                 if (route.Pattern == Pattern.Rpc)
                 {
-
                     InvokeWithRpcChoreography(ref poolItem, ref context);
-
                 }
                 else if (route.Pattern == Pattern.FireAndForget)
                 {
-
                     InvokeWithFireAndForgetChoreography(ref poolItem, ref context);
-
                 }
 
                 this.connectionPool.Enqueue(this.RecycleConnectionPoolItem(ref poolItem));
             }
             else
             {
-
                 await this.next(context);
-
             }
         }
 
         private void InvokeWithFireAndForgetChoreography(ref ConnectionPoolItem poolItem, ref HttpContext context)
         {
-
             byte[] payload = context.Request.Body.ReadToEnd();
 
             context.Response.StatusCode = 200;
@@ -125,12 +115,10 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             ContextAdapter.FillPropertiesFromRequest(propsIn, context);
 
             poolItem.model.BasicPublish(string.Empty, poolItem.queueName, propsIn, payload);
-            
         }
 
         private void InvokeWithRpcChoreography(ref ConnectionPoolItem poolItem, ref HttpContext context)
         {
-
             byte[] payload = context.Request.Body.ReadToEnd();
 
             IBasicProperties propsIn = poolItem.model.CreateBasicProperties();
@@ -142,7 +130,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
                     queueName: poolItem.queueName
                 ))
             {
-
                 payload = rpcClient.Call(propsIn, payload, out IBasicProperties propsOut);
 
                 ContextAdapter.FillResponseFromProperties(context, propsOut);

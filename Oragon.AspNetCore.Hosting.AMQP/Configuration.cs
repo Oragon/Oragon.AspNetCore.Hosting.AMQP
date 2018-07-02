@@ -1,7 +1,5 @@
 ﻿using RabbitMQ.Client;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
@@ -21,7 +19,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
         public List<RouteInfo> Routes { get; internal set; } = new List<RouteInfo>();
 
-        #endregion
+        #endregion properties
 
         #region Fluent
 
@@ -31,13 +29,11 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             return this;
         }
 
-
         public Configuration WithPoolSize(int poolSize)
         {
             this.PoolSize = poolSize;
             return this;
         }
-
 
         public Configuration WithConnectionFactory(IConnectionFactory connectionFactory)
         {
@@ -45,13 +41,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             return this;
         }
 
-        
         public Configuration WithRoute(string method, string route, Pattern pattern)
         {
             this.Routes.Add(new RouteInfo() { Method = method, Pattern = pattern, Route = route });
             return this;
         }
-        #endregion
 
+        #endregion Fluent
     }
 }

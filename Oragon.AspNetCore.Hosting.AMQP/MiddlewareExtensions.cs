@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Oragon.AspNetCore.Hosting.AMQP.Server;
-using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
@@ -19,6 +16,5 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             builderConfigurer(builderConfiguration);
             return app.UseMiddleware<AMQPServerMiddleware>(new object[] { builderConfiguration });
         }
-
     }
 }

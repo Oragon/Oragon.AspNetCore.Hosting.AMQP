@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Text;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
     public static class Helper
     {
-
-
         public static byte[] ReadToEnd(this Stream stream)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -19,7 +13,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP
                 return ms.ToArray();
             }
         }
-
 
         public static string UTF8GetString(this object objectToConvert)
         {
