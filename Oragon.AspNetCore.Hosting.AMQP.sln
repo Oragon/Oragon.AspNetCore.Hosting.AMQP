@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oragon.AspNetCore.Hosting.AMQPTests", "Oragon.AspNetCore.Hosting.AMQPTests\Oragon.AspNetCore.Hosting.AMQPTests.csproj", "{039BE399-216C-4563-95D2-66EBBA09E1E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQPTests", "Oragon.AspNetCore.Hosting.AMQPTests\Oragon.AspNetCore.Hosting.AMQPTests.csproj", "{039BE399-216C-4563-95D2-66EBBA09E1E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C77EDD4-4758-4F58-B675-9A911BEA8113}"
+	ProjectSection(SolutionItems) = preProject
+		Jenkinsfile = Jenkinsfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
