@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Oragon.AspNetCore.Hosting.AMQP\Oragon.AspNetCore.Hosting.AMQP.csproj" />
+        <ProjectReference Include="..\..\Oragon.AspNetCore.Hosting.AMQP\Oragon.AspNetCore.Hosting.AMQP.csproj" />
     </ItemGroup>
 
     <ItemGroup>
