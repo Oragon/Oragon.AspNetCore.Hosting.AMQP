@@ -79,7 +79,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             {
                 ConnectionPoolItem poolItem;
 
-                while (!this.connectionPool.TryDequeue(out poolItem) == false) ;
+                while (!this.connectionPool.TryDequeue(out poolItem)) Console.WriteLine("wait...");
 
                 if (route.Pattern == Pattern.Rpc)
                 {
