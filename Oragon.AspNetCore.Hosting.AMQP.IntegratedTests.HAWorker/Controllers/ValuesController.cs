@@ -28,18 +28,21 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            System.Diagnostics.Debug.Write($"ValuesController.Post(string value = \"{value}\")");
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            System.Diagnostics.Debug.Write($"ValuesController.Put(int id = {id}, string value = \"{value}\")");
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            System.Diagnostics.Debug.Write($"ValuesController.Delete(int id = {id})");
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Oragon.AspNetCore.Hosting.AMQP
 {
-    public static class Helper
+    public static class Extensions
     {
         public static byte[] ReadToEnd(this Stream stream)
         {
@@ -16,13 +16,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
         public static string UTF8GetString(this object objectToConvert)
         {
-            if (objectToConvert is string)
-                return (string)objectToConvert;
+            string returnValue = objectToConvert as string;
 
-            if (objectToConvert != null)
-                return Encoding.UTF8.GetString((byte[])objectToConvert);
+            if (returnValue == null && objectToConvert != null)
+                returnValue = Encoding.UTF8.GetString((byte[])objectToConvert);
 
-            return null;
+            return returnValue;
         }
 
         public static long UTF8GetLong(this object objectToConvert)
