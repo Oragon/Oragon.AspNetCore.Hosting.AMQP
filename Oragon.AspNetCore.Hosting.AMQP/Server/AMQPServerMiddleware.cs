@@ -45,11 +45,8 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             {
                 connectionPoolItem.model.Close();
                 connectionPoolItem.model.Dispose();
-                //GC.SuppressFinalize(connectionPoolItem.model);
                 connectionPoolItem.connection.Close();
                 connectionPoolItem.connection.Dispose();
-                //GC.SuppressFinalize(connectionPoolItem.connection);
-                GC.Collect();
                 return BuildConnectionPoolItem();
             }
             return connectionPoolItem;

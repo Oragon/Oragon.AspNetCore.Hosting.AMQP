@@ -14,8 +14,26 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             }
         }
 
-        public static string UTF8GetString(this object objectToConvert) => objectToConvert is string ? (string)objectToConvert : objectToConvert == null ? null : Encoding.UTF8.GetString((byte[])objectToConvert);
+        public static string UTF8GetString(this object objectToConvert)
+        {
+            if (objectToConvert is string)
+                return (string)objectToConvert;
 
-        public static long UTF8GetLong(this object objectToConvert) => objectToConvert is long ? (long)objectToConvert : objectToConvert == null ? 0 : long.Parse(objectToConvert.UTF8GetString());
+            if (objectToConvert != null)
+                return Encoding.UTF8.GetString((byte[])objectToConvert);
+
+            return null;
+        }
+
+        public static long UTF8GetLong(this object objectToConvert)
+        {
+            if (objectToConvert is long)
+                return (long)objectToConvert;
+
+            if (objectToConvert != null)
+                return long.Parse(objectToConvert.UTF8GetString());
+
+            return 0;
+        }
     }
 }
