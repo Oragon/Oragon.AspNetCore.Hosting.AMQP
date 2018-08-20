@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Oragon.AspNetCore.Hosting.AMQP.Worker
 {
-    public class AMQPWorkerBootstrapper
+    public class AmqpWorkerBootstrapper
     {
         public static void Run(IWebHostBuilder builder, Action<Configuration> builderConfigurer)
         {

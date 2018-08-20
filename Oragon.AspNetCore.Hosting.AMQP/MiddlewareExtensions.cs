@@ -14,7 +14,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             }
             var builderConfiguration = new Configuration();
             builderConfigurer(builderConfiguration);
-            return app.UseMiddleware<AMQPServerMiddleware>(new object[] { builderConfiguration });
+            return app.UseMiddleware<AmqpServerMiddleware>(new object[] { builderConfiguration });
         }
     }
 }

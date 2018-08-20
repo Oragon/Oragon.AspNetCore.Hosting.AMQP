@@ -12,12 +12,12 @@ using RabbitMQ.Client;
 
 namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
             IWebHostBuilder config = CreateWebHostBuilder(args);
-            AMQPWorkerBootstrapper.Run(config, builder =>
+            AmqpWorkerBootstrapper.Run(config, builder =>
                 builder
                 .WithGroupName("dynamic_api")
                 .WithConnectionFactory(new ConnectionFactory()

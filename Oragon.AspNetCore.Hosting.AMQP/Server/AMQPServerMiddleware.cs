@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Oragon.AspNetCore.Hosting.AMQP.Server
 {
-    public class AMQPServerMiddleware
+    public class AmqpServerMiddleware
     {
         private readonly RequestDelegate next;
         private readonly Configuration configuration;
         private readonly List<RouteInfo> routeInfos;
         private readonly string connectionName;
 
-        public AMQPServerMiddleware(RequestDelegate next, Configuration configuration)
+        public AmqpServerMiddleware(RequestDelegate next, Configuration configuration)
         {
             this.next = next ?? throw new ArgumentNullException("next");
             this.configuration = configuration ?? throw new ArgumentNullException("configuration");
@@ -70,7 +70,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             }
         }
 
-        private ConcurrentQueue<ConnectionPoolItem> connectionPool = new ConcurrentQueue<ConnectionPoolItem>();
+        private readonly ConcurrentQueue<ConnectionPoolItem> connectionPool = new ConcurrentQueue<ConnectionPoolItem>();
 
         public async Task Invoke(HttpContext context)
         {
@@ -79,10 +79,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Server
             {
                 ConnectionPoolItem poolItem;
 
-                while (this.connectionPool.TryDequeue(out poolItem) == false)
-                {
-                    ;
-                }
+                while (!this.connectionPool.TryDequeue(out poolItem) == false) ;
 
                 if (route.Pattern == Pattern.Rpc)
                 {
