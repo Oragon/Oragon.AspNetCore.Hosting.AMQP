@@ -1,9 +1,9 @@
 pipeline {
     agent {
-        docker { 
-            alwaysPull false
-            image 'microsoft/dotnet:2.1-sdk'
-            reuseNode false
+        dockerfile {
+            // alwaysPull false
+            // image 'microsoft/dotnet:2.1-sdk'
+            // reuseNode false
             args '-u root:root'
         }
     }
@@ -17,8 +17,17 @@ pipeline {
                 
                 echo sh(script: 'env|sort', returnStdout: true)
 
-                sh 'dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln'
+                // sh 'dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln'
+                withCredentials([usernamePassword(credentialsId: 'SonarQube', passwordVariable: 'SONARQUBE_KEY', usernameVariable: 'DUMMY' )]) {
 
+                    sh  '''
+                            export PATH="$PATH:/root/.dotnet/tools"
+                            dotnet sonarscanner begin /k:"Oragon-AspNetCore-Hosting-AMQP" /d:sonar.host.url="http://sonar.oragon.io" /d:sonar.login="$SONARQUBE_KEY"
+                            dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln
+                            dotnet sonarscanner end /d:sonar.login="$SONARQUBE_KEY"
+                        '''
+
+                }
             }
 
         }
@@ -28,6 +37,7 @@ pipeline {
             steps {
 
                 sh 'dotnet test ./Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
+                
             }
 
         }
