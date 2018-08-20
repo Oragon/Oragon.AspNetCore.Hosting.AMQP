@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrated", "Integrated", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{28673550-711E-46F5-B757-96725966DDA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy.csproj", "{78E7E908-9290-4235-AED1-54C2479D8D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy", "tests\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy.csproj", "{78E7E908-9290-4235-AED1-54C2479D8D5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker", "tests\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker\Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker.csproj", "{3A58B344-1DA3-4017-8A57-878AEFD0D6FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQPTests", "Oragon.AspNetCore.Hosting.AMQPTests\Oragon.AspNetCore.Hosting.AMQPTests.csproj", "{039BE399-216C-4563-95D2-66EBBA09E1E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oragon.AspNetCore.Hosting.AMQPTests", "tests\Oragon.AspNetCore.Hosting.AMQPTests\Oragon.AspNetCore.Hosting.AMQPTests.csproj", "{039BE399-216C-4563-95D2-66EBBA09E1E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C77EDD4-4758-4F58-B675-9A911BEA8113}"
 	ProjectSection(SolutionItems) = preProject
