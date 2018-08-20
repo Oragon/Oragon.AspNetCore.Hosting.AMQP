@@ -40,7 +40,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

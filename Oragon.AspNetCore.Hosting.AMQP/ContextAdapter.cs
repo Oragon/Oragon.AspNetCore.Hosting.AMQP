@@ -49,7 +49,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
 
             foreach (var header in props.Headers)
             {
-                if (header.Key.StartsWith("AMQP_") == false)
+                if (!header.Key.StartsWith("AMQP_"))
                 {
                     requestBuilder.AddHeader(header.Key, header.Value.UTF8GetString());
                 }
@@ -88,7 +88,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             context.Response.ContentLength = props.Headers["AMQP_CONTENTLENGTH"].UTF8GetLong();
             foreach (var header in props.Headers)
             {
-                if (header.Key.StartsWith("AMQP_") == false)
+                if (!header.Key.StartsWith("AMQP_"))
                 {
                     context.Response.Headers.Add(header.Key, header.Value.UTF8GetString());
                 }

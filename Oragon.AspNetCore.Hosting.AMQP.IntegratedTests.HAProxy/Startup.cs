@@ -51,8 +51,6 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAProxy
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
-
             app.UseAmqp(it =>
                 it.WithGroupName("dynamic_api")
                 .WithRoute("GET", "/api/", Pattern.FireAndForget)

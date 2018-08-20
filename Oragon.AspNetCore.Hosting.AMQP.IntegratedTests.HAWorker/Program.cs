@@ -29,10 +29,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.IntegratedTests.HAWorker
                     Port = 5672
                 })
                 .WithPoolSize(10)
-               
             );
-
-            //config.Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -35,7 +35,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
 
                 ContextAdapter.FillRequestBuilderFromProperties(requestProperties, request);
 
-                var response = request.SendAsync(method).GetAwaiter().GetResult();
+                request.SendAsync(method).GetAwaiter().GetResult();
 
                 this.m_subscription.Ack();
             }
