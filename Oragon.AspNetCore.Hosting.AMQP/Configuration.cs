@@ -35,6 +35,12 @@ namespace Oragon.AspNetCore.Hosting.AMQP
             return this;
         }
 
+        public Configuration WithMaxConnectionAge(long maxConnectionAge)
+        {
+            this.MaxConnectionAge = maxConnectionAge;
+            return this;
+        }
+
         public Configuration WithConnectionFactory(IConnectionFactory connectionFactory)
         {
             this.ConnectionFactory = connectionFactory;
