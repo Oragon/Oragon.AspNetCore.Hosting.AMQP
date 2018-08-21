@@ -10,7 +10,7 @@ Experimental drop-in replacement for HTTP on ASP.NET Core 2.1
 [![SonarQube][sonar-sqale_index-image]][sonar-url] [![SonarQube][sonar-vulnerabilities-image]][sonar-url]  [![SonarQube][sonar-bugs-image]][sonar-url] [![SonarQube][sonar-code_smells-image]][sonar-url]  [![SonarQube][sonar-coverage-image]][sonar-url] [![SonarQube][sonar-duplicated_lines_density-image]][sonar-url] [![SonarQube][sonar-ncloc-image]][sonar-url] 
 
 
-[![SonarQube][brazil]][sonar-url] 
+PT-BR Overview [![SonarQube][brazil]][pt-br-overview] 
 
 [brazil]:http://www.goal.cc/content/images/flags/28.png
 [sonar-bugs-image]: http://sonar.oragon.io/api/project_badges/measure?project=Oragon-AspNetCore-Hosting-AMQP&metric=bugs
@@ -26,3 +26,4 @@ Experimental drop-in replacement for HTTP on ASP.NET Core 2.1
 [sonar-vulnerabilities-image]: http://sonar.oragon.io/api/project_badges/measure?project=Oragon-AspNetCore-Hosting-AMQP&metric=vulnerabilities
 
 [sonar-url]: http://sonar.oragon.io/dashboard?id=Oragon-AspNetCore-Hosting-AMQP
+[pt-br-overview]: http://gago.io/blog/projetos/oragon-aspnetcore-hosting-amqp/
