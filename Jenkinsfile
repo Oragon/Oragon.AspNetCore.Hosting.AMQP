@@ -24,12 +24,8 @@ pipeline {
 
             steps {
 
-                sh 'dotnet test ./Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
+                sh 'dotnet test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
 
-                sh  '''
-                        export PATH="$PATH:/root/.dotnet/tools"
-                        dotnet reportgenerator "-reports:./coverage.xml" "-targetdir:/output-coverage/" -reporttypes:HTMLInline;Cobertura;Badges "-filefilters:-./tests/"
-                    '''
             }
 
         }
@@ -41,10 +37,14 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'SonarQube', passwordVariable: 'SONARQUBE_KEY', usernameVariable: 'DUMMY' )]) {
 
                     sh  '''
-                            export PATH="$PATH:/root/.dotnet/tools"
-                            dotnet sonarscanner begin /k:"Oragon-AspNetCore-Hosting-AMQP" /d:sonar.host.url="http://sonar.oragon.io" /d:sonar.login="$SONARQUBE_KEY"
-                            dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln
-                            dotnet sonarscanner end /d:sonar.login="$SONARQUBE_KEY"
+                        dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln
+
+                        coverlet ./tests/Oragon.AspNetCore.Hosting.AMQPTests/bin/Debug/netstandard2.0/Oragon.AspNetCore.Hosting.AMQP.dll --target "dotnet" --targetargs "test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --no-build"  --format opencover --output "/output-coverage/result"
+
+                        export PATH="$PATH:/root/.dotnet/tools"
+                        dotnet sonarscanner begin /k:"Oragon-AspNetCore-Hosting-AMQP" /d:sonar.host.url="http://sonar.oragon.io" /d:sonar.login="$SONARQUBE_KEY"
+                        dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln
+                        dotnet sonarscanner end /d:sonar.login="$SONARQUBE_KEY"
                         '''
 
                 }
