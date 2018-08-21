@@ -33,6 +33,8 @@ pipeline {
 
                         # coverlet ./tests/output-tests/Oragon.AspNetCore.Hosting.AMQPTests.dll --target "dotnet" --targetargs "test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --no-build"  --format opencover --output "/output-coverage/result"
                         
+                        cat /output-coverage/coverage.xml
+
                         dotnet sonarscanner begin /k:"Oragon-AspNetCore-Hosting-AMQP" /d:sonar.host.url="http://sonar.oragon.io" /d:sonar.login="$SONARQUBE_KEY"
                         dotnet build ./Oragon.AspNetCore.Hosting.AMQP.sln
                         dotnet sonarscanner end /d:sonar.login="$SONARQUBE_KEY"
