@@ -24,20 +24,12 @@ pipeline {
 
             steps {
 
-                sh 'dotnet test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
-
-            }
-
-        }
-
-        stage('Check') {
-
-            steps {
-
                  withCredentials([usernamePassword(credentialsId: 'SonarQube', passwordVariable: 'SONARQUBE_KEY', usernameVariable: 'DUMMY' )]) {
 
                     sh  '''
                         export PATH="$PATH:/root/.dotnet/tools"
+
+                        sh 'dotnet test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --configuration Debug --output ../output-tests'
 
                         coverlet ./tests/Oragon.AspNetCore.Hosting.AMQPTests/bin/Debug/netstandard2.0/Oragon.AspNetCore.Hosting.AMQP.dll --target "dotnet" --targetargs "test ./tests/Oragon.AspNetCore.Hosting.AMQPTests/Oragon.AspNetCore.Hosting.AMQPTests.csproj --no-build"  --format opencover --output "/output-coverage/result"
                         
