@@ -48,7 +48,7 @@ namespace Oragon.AspNetCore.Hosting.AMQP.Worker
 
             if (requestProperties.Headers != null)
             {
-                var path = requestProperties.Headers["AMQP_PATH"].UTF8GetString().ToString();
+                var path = requestProperties.Headers["AMQP_PATH"].UTF8GetString();
                 var method = requestProperties.Headers["AMQP_METHOD"].UTF8GetString();
 
                 var request = testServer.CreateRequest(path);
